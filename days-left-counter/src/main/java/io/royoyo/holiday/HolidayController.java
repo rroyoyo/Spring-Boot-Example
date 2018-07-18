@@ -42,8 +42,8 @@ public class HolidayController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/holidays/{id}/countdown")
-	public String timeLeft(@PathVariable String id) {
-		return (holidayService.getHoliday(id).timeLeft());
+	public Holiday timeLeft(@PathVariable String id) {
+		return (holidayService.getHoliday(id));
 
 	}
 }
