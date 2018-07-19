@@ -3,44 +3,50 @@ package io.royoyo.holiday;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+//import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 @Service
 public class HolidayService {
 	
-	@SuppressWarnings("deprecation")
-	List<Holiday> holidays = new ArrayList<>(Arrays.asList(new Holiday("booking101", "customer101", "Incredible India", new Date(118, 6, 25))));
+	@Autowired
+	private HolidayRepository holidayRepository;
+	
+	//@SuppressWarnings("deprecation")
+	//List<Holiday> holidays = new ArrayList<>(Arrays.asList(new Holiday("booking101", "customer101", "Incredible India", new Date(118, 6, 25))));
+	
+	//public List<Holiday> getAllHolidays(){
+	//	 return holidays;
+	//}
 	
 	public List<Holiday> getAllHolidays(){
-		 return holidays;
+		@SuppressWarnings("deprecation")
+		List<Holiday> holidays = new ArrayList<>(Arrays.asList(new Holiday("booking101", "customer101", "Incredible India", new Date(118, 6, 25))));
+		holidayRepository.findAll().forEach(holidays::add);
+		return holidays;
 	 }
 	
-	public Holiday getHoliday(String bId) {
-		 return holidays.stream().filter(h -> h.getBookingID().equals(bId)).findFirst().get();
+	public Optional<Holiday> getHoliday(String id) {
+		 return holidayRepository.findById(id);
 	 }
 	
-	 public void addHoliday(Holiday holiday) {
-		 holidays.add(holiday);
+	public void addHoliday(Holiday holiday) {
+		 holidayRepository.save(holiday);
 	 }
-	 
-	 public void updateHoliday(String bid, Holiday holiday) {
-			for (int i = 0; i< holidays.size(); i++) {
-				Holiday t = holidays.get(i);
-				if(t.getBookingID().equals(bid)) {
-					holidays.set(i, holiday);
-					return;
-					//return "Updated Successfully";
-				}
-			}
-			//return "Couldn't update, created new Holiday instead";
-		}
-	 
+
+	public void updateHoliday(String id, Holiday holiday) {
+		holidayRepository.save(holiday);
+	}
+	
 	 public void deleteHoliday(String bid) {
-			holidays.removeIf(t -> t.getBookingID().equals(bid));
-			
-		}	 
+			holidayRepository.deleteById(bid);
+	}	 
+	 
 	 
 }
 

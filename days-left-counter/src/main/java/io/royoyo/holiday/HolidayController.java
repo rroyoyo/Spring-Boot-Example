@@ -3,6 +3,7 @@ package io.royoyo.holiday;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +23,7 @@ public class HolidayController {
 	}
 	
 	@RequestMapping("/holidays/{id}")
-	public Holiday getHoliday(@PathVariable String id) {
+	public Optional<Holiday> getHoliday(@PathVariable String id) {
 		return holidayService.getHoliday(id);
 	}
 	
@@ -41,11 +42,6 @@ public class HolidayController {
 		holidayService.deleteHoliday(id);
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/holidays/{id}/countdown")
-	public Holiday timeLeft(@PathVariable String id) {
-		return (holidayService.getHoliday(id));
-
-	}
 }
 	
 
