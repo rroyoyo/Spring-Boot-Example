@@ -11,13 +11,9 @@ public class Holiday {
 	private String bookingID;
 	private String customerID;
 	private String description;
-	private Date bookingDate;
+	private Date bookingDate = new Date();
 	private Date checkinDate;
 	private String timeLeft;
-	
-	public String getBookingID() {
-		return bookingID;
-	}
 	
 public Holiday() {
 		
@@ -28,10 +24,12 @@ public Holiday() {
 		this.customerID = customerID;
 		this.description = description;
 		this.checkinDate = checkinDate;
-		this.bookingDate = new Date();
 		this.timeLeft = getTimeLeft();
 	}
 
+	public String getBookingID() {
+		return bookingID;
+	}
 
 	public void setBookingID(String bookingID) {
 		this.bookingID = bookingID;
@@ -66,7 +64,6 @@ public Holiday() {
 				+System.lineSeparator()+ "bookingDate=" + bookingDate + ", checkinDate=" + checkinDate + "]";
 	}
 	
-
 	public String getTimeLeft() {
 		Date d1 = checkinDate;
 		Date d2 = new Date();
@@ -86,11 +83,5 @@ public Holiday() {
 		//				+ System.lineSeparator() +"Here are the details: "+this.toString());
 		return timeLeft;
 	}
-
-
-	//public void setTimeLeft(String timeLeft) {
-	//	this.timeLeft = timeLeft;
-	//}
-	
 
 }
