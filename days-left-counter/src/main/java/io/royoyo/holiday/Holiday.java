@@ -15,9 +15,8 @@ public class Holiday {
 	private Date checkinDate;
 	private String timeLeft;
 	
-public Holiday() {
-		
-	}
+  public Holiday(){
+  }
 	
 	public Holiday(String bookingID, String customerID, String description, Date checkinDate) {
 		this.bookingID = bookingID;
