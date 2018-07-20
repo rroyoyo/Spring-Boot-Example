@@ -10,10 +10,9 @@ public class Holiday {
 	private Date bookingDate;
 	private Date checkinDate;
 	private String timeLeft;
-	public String getBookingID() {
-		return bookingID;
-	}
 	
+	public Holiday(){
+	}
 	
 	public Holiday(String bookingID, String customerID, String description, Date checkinDate) {
 		this.bookingID = bookingID;
@@ -23,6 +22,9 @@ public class Holiday {
 		this.bookingDate = new Date();
 	}
 
+	public String getBookingID() {
+		return bookingID;
+	}
 
 	public void setBookingID(String bookingID) {
 		this.bookingID = bookingID;
