@@ -1,6 +1,5 @@
-# timeLeft
-Holiday Time Left Countdown
-Project contains model, repository, service and controller classes that work together to create and manage a list of bookings that can be viewed, incremented, updated and deleted easily
+# Spring Boot App
+Project contained model, repository, service and controller classes that worked together to create and manage a list of POJOs that could be viewed, incremented, updated and deleted easily
 
 References:
 
